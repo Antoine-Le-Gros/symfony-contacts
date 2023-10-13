@@ -13,6 +13,6 @@
 {% block body %}
     {% set col = ["green", "red"] %}
     {%  for i in 0..10 %}
-        <h1 style="color: {{ cycle(col,i) }}"><p>{{ 'hello'|capitalize}} {{ slug }}! ({{ i|format_number({integer_digit: 2}) }}) </p></h1>
+        <h1 style="color: {{ cycle(col,i) }}"><p>{{ 'hello'|capitalize}} {{ name }}! ({{ i|format_number({integer_digit: 2}) }}) </p></h1>
     {% endfor %}
 {% endblock %}
