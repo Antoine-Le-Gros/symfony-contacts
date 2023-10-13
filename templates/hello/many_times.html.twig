@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Welcome!
+    Hello many times!
 {% endblock %}
 
 {% block stylesheets %}
@@ -12,7 +12,7 @@
 
 {% block body %}
     {% set col = ["green", "red"] %}
-    {%  for i in 0..10 %}
-        <h1 style="color: {{ cycle(col,i) }}"><p>{{ 'hello'|capitalize}} {{ slug }}! ({{ i|format_number({integer_digit: 2}) }}) </p></h1>
+    {% for i in 1..times %}
+        <h1 style="color: {{ cycle(col,i) }}"><p>hello many times {{ name |capitalize }} ! ({{ i|format_number({integer_digit: 2}) }}) </p></h1>
     {% endfor %}
 {% endblock %}
