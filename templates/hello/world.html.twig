@@ -1,9 +1,15 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Hello World</title>
-    </head>
-    <body>
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Welcome!
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
+
+{% block body %}
         <h1><p>hello {{ slug }}!</p></h1>
-    </body>
-</html>
+{% endblock %}
