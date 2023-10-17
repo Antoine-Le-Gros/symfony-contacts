@@ -12,7 +12,8 @@
 
 {% block body %}
     {% set col = ["green", "red"] %}
+    <h1>Hello many times {{ name |capitalize }}!</h1>
     {% for i in 1..times %}
-        <h1 style="color: {{ cycle(col,i) }}"><p>hello many times {{ name |capitalize }} ! ({{ i|format_number({integer_digit: 2}) }}) </p></h1>
+        <h1 style="color: {{ cycle(col,i) }}"><p>Hello {{ name |capitalize }}! ({{ i|format_number({integer_digit: 2}) }}) </p></h1>
     {% endfor %}
 {% endblock %}
