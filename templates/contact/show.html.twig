@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
+{% block title %} {{ contact.lastname }}, {{ contact.firstname }} {% endblock %}
+
 {% block body %}
-
+    <h1>{{ contact.lastname }}, {{ contact.firstname }}</h1>
 {% endblock %}
 
-{% block title %}
 
-{% endblock %}
 
