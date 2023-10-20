@@ -20,7 +20,7 @@ class ContactController extends AbstractController
     }
 
     #[Route('/contact/{id}')]
-    public function show(?Contact $contact, ContactRepository $contactRepository): Response
+    public function show(?Contact $contact): Response
     {
         if (empty($contact)) {
             throw $this->createNotFoundException("le contact n'existe pas ");
