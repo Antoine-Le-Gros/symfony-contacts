@@ -3,7 +3,18 @@
 {% block title %} {{ contact.lastname }}, {{ contact.firstname }} {% endblock %}
 
 {% block body %}
+
     <h1>{{ contact.lastname }}, {{ contact.firstname }}</h1>
+    <dl>
+        <dt> prénom</dt>
+        <dd> {{ contact.firstname }}</dd>
+
+        <dt> nom</dt>
+        <dd> {{ contact.lastname }}</dd>
+
+        <dt> email</dt>
+        <dd> {{ contact.email }}</dd>
+    </dl>
 {% endblock %}
 
 
