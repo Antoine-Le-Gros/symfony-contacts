@@ -25,7 +25,7 @@ Teste le code PHP avec PHP CS Fixer :
 composer test:cs
 ```
 
-Test la validité du code avec des tests :
+Test la validité du code avec des tests en initialisant une base de données avant de lancer les tests :
 ```shell
 composer test:codeception
 ```

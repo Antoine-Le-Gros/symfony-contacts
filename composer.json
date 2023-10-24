@@ -92,7 +92,10 @@
             "php-cs-fixer fix --dry-run"
         ],
         "test:codeception": [
-            "codecept clean",
+            "php vendor/bin/codecept clean",
+            "php bin/console doctrine:database:drop --force --quiet --env=test",
+            "php bin/console doctrine:database:create --quiet --env=test",
+            "php bin/console doctrine:schema:create --quiet --env=test",
             "php vendor/bin/codecept run"
         ],
         "test":[
@@ -110,7 +113,7 @@
         "start" : "Lance le serveur symfony",
         "fix:cs": "Fix le code PHP avec PHP CS Fixer",
         "test:cs" : "Test le code PHP avec PHP CS Fixer",
-        "test:codeception": "Test la validité du code",
+        "test:codeception": "Test la validité du code en initialisant une base de données avant de lancer les tests",
         "test":  "Test les codes avec PHP CS Fixer et et sa validité avec Codeception",
         "db": "Détruit une base pour la recréer et insérer des entités dans la base de données"
     },
@@ -126,6 +129,7 @@
     "require-dev": {
         "codeception/codeception": "^5.0",
         "codeception/module-asserts": "^3.0",
+        "codeception/module-doctrine2": "^3.0",
         "codeception/module-symfony": "^3.1",
         "doctrine/doctrine-fixtures-bundle": "^3.4",
         "friendsofphp/php-cs-fixer": "^3.34",
