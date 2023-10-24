@@ -3,15 +3,47 @@
 ## Auteurs
 Antoine Le Gros
 
-## Installaton et configuration
+## Installation et configuration
 
 Pour installer le projet, fait un ``git clone https://iut-info.univ-reims.fr/gitlab/le-g0067/symfony-contacts.git`` 
 Ensuite, vérifier que composer est installé avec ``composer --version``
 
 ## Documentation script
 
-``start`` : Lance le serveur symfony  
-``fix:cs``: Fix le code PHP avec PHP CS Fixer  
-``test:cs`` : Test le code PHP avec PHP CS Fixer  
-``test:codeception``: Test la validité du code  
-``test``: Test les codes avec PHP CS Fixer et et sa validité avec Codeception  
+Lancez le serveur symfony :
+```shell
+composer start
+```
+
+Fixe le code PHP avec PHP CS Fixer :
+```shell
+composer fix:cs
+```
+
+Teste le code PHP avec PHP CS Fixer :
+```shell
+composer test:cs
+```
+
+Test la validité du code avec des tests :
+```shell
+composer test:codeception
+```
+
+Test les codes avec PHP CS Fixer et et sa validité avec Codeception :
+```shell
+composer test
+```
+
+Détruit une classe pour en recréer une et y insérer des entités générées aléatoirement
+```shell
+composer db
+```
+
+## Documentation de la configuration de la base de données Contact
+
+Pour configurer la base de données, lancez la commande :
+```shell
+composer db
+```
+
