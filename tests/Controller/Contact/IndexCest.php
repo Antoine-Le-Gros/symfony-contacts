@@ -52,7 +52,7 @@ class IndexCest
         );
         $I->amOnPage('/contact');
         $I->seeResponseCodeIsSuccessful(200);
-        $text = $I->grabMultiple('a');
+        $text = $I->grabMultiple('ul.contacts li a[href]');
         $I->assertEquals(['Aba, Zoe', 'Gouedar, Pierre', 'Le Gros, Antoine', 'Zwz, Henry'], $text);
     }
 }
