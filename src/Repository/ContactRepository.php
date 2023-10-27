@@ -6,6 +6,8 @@ use App\Entity\Contact;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
+use function PHPUnit\Framework\isEmpty;
+
 /**
  * @extends ServiceEntityRepository<Contact>
  *
@@ -45,4 +47,21 @@ class ContactRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+    /**
+     * @return Contact[]
+     */
+    public function search(string $text = ''): array
+    {
+        $qb = $this->createQueryBuilder('c');
+        if ('' !== $text) {
+            $qb->where('UPPER(c.lastname) LIKE UPPER(:text)')
+                ->orWhere('UPPER(c.firstname) LIKE UPPER(:text)')
+                ->setParameter('text', '%'.$text.'%');
+        }
+        $query = $qb->orderBy('c.lastname', 'ASC')
+                    ->addOrderBy('c.firstname', 'ASC')
+                    ->getQuery();
+
+        return $query->execute();
+    }
 }

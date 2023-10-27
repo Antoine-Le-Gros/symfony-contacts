@@ -5,15 +5,19 @@ namespace App\Controller;
 use App\Entity\Contact;
 use App\Repository\ContactRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
+use function PHPUnit\Framework\isEmpty;
 
 class ContactController extends AbstractController
 {
     #[Route('/contact')]
-    public function index(ContactRepository $contactRepository): Response
+    public function index(ContactRepository $contactRepository, Request $request): Response
     {
-        $contacts = $contactRepository->findBy([], ['lastname' => 'ASC', 'firstname' => 'ASC']);
+        $search = $request->query->get('search', '');
+        $contacts = $contactRepository->search($search);
 
         return $this->render('contact/index.html.twig', ['contacts' => $contacts]);
     }
