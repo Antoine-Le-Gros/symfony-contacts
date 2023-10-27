@@ -23,8 +23,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav-item">
                     </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Recherche">
+                    <form class="d-flex" role="search" action="{{ path('app_contact_index') }}">
+                        <input class="form-control me-2" type="search" name="search" placeholder="Recherche" aria-label="Recherche" value="{{ search|default('') }}">
                         <button class="btn btn-outline-success" type="submit">Rechercher</button>
                     </form>
                 </div>

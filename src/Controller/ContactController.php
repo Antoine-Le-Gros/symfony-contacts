@@ -9,8 +9,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-use function PHPUnit\Framework\isEmpty;
-
 class ContactController extends AbstractController
 {
     #[Route('/contact')]
@@ -19,7 +17,7 @@ class ContactController extends AbstractController
         $search = $request->query->get('search', '');
         $contacts = $contactRepository->search($search);
 
-        return $this->render('contact/index.html.twig', ['contacts' => $contacts]);
+        return $this->render('contact/index.html.twig', ['contacts' => $contacts, 'search' => $search]);
     }
 
     #[Route('/contact/{id}')]
