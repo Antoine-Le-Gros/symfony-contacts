@@ -6,8 +6,6 @@ use App\Entity\Contact;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
-use function PHPUnit\Framework\isEmpty;
-
 /**
  * @extends ServiceEntityRepository<Contact>
  *

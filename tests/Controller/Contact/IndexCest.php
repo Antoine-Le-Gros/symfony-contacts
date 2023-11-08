@@ -55,4 +55,20 @@ class IndexCest
         $text = $I->grabMultiple('ul.contacts li a[href]');
         $I->assertEquals(['Aba, Zoe', 'Gouedar, Pierre', 'Le Gros, Antoine', 'Zwz, Henry'], $text);
     }
+
+    public function search(ControllerTester $I): void
+    {
+        ContactFactory::createSequence(
+            [
+                ['firstname' => 'Charles', 'lastname' => 'AUBRY'],
+                ['firstname' => 'Charles', 'lastname' => 'ab'],
+                ['firstname' => 'Charles', 'lastname' => 'av'],
+                ['firstname' => 'Charles', 'lastname' => 'ad'],
+            ]
+        );
+        $I->amOnPage('/contact?search=charles');
+        $text = $I->grabMultiple('ul.contacts li a[href]');
+        $I->assertEquals(['AUBRY, Charles', 'ab, Charles', 'ad, Charles', 'av, Charles'], $text);
+        $I->seeNumberOfElements('li', 4);
+    }
 }
