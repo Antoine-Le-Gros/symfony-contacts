@@ -11,5 +11,6 @@ class ContactFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         ContactFactory::createMany(150);
+        ContactFactory::faker()->boolean(90);
     }
 }
