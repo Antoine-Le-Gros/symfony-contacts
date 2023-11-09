@@ -22,6 +22,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav-item">
+                        <li> <a href="{{ path('app_category_index')}}"> Catégories</a></li>
                     </ul>
                     <form class="d-flex" role="search" action="{{ path('app_contact_index') }}">
                         <input class="form-control me-2" type="search" name="search" placeholder="Recherche" aria-label="Recherche" value="{{ search|default('') }}">
