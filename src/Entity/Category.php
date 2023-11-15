@@ -19,6 +19,7 @@ class Category
     private ?string $name = null;
 
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Contact::class)]
+    #[ORM\OrderBy(['lastname' => 'ASC', 'firstname' => 'ASC'])]
     private Collection $contacts;
 
     public function __construct()
