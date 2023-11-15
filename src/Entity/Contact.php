@@ -25,9 +25,6 @@ class Contact
     #[ORM\Column(length: 20)]
     private ?string $phone = null;
 
-    #[ORM\ManyToOne]
-    private ?Category $category = null;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -77,18 +74,6 @@ class Contact
     public function setPhone(string $phone): static
     {
         $this->phone = $phone;
-
-        return $this;
-    }
-
-    public function getCategory(): ?Category
-    {
-        return $this->category;
-    }
-
-    public function setCategory(?Category $category): static
-    {
-        $this->category = $category;
 
         return $this;
     }
