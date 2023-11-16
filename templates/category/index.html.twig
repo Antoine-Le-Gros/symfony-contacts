@@ -8,7 +8,9 @@
         <h1>Liste des categories</h1>
         <ul class="categories">
             {% for category in categories %}
+            <a href="{{ path('app_category_show', {id:category.id}) }}">
                 <li><span class="name">{{ category.name }}</span></li>
+            </a>
             {% endfor %}
         </ul>
     </div>
