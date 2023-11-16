@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Contact;
 use App\Repository\ContactRepository;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,9 +22,11 @@ class ContactController extends AbstractController
     }
 
     #[Route('/contact/{id}')]
-    public function show(?Contact $contact): Response
-    {
-        if (empty($contact)) {
+    public function show(
+        #[MapEntity(expr: 'repository.findWithCategory(id)')]
+        ?Contact $contact
+    ): Response {
+        if (null === $contact) {
             throw $this->createNotFoundException("le contact n'existe pas ");
         }
 
