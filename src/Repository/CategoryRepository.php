@@ -20,6 +20,7 @@ class CategoryRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Category::class);
     }
+
     public function findAllAlphabeticallyWithContactCount(): array
     {
         return $this->createQueryBuilder('c')

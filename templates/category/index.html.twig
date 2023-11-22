@@ -8,12 +8,13 @@
         <h1>Liste des categories</h1>
         <ul class="categories">
             {% for array in categories %}
-
                 <li>
                     <a href="{{ path('app_category_show', {id:array.category.id}) }}">
-                    <h6>{{ array.category.name }} <span class="badge bg-secondary">{{ array.count }}</span>
-                    </h6></a></li>
-
+                    <h6>{{ array.category.name }}
+                        <span class="badge bg-secondary">{{ array.count }}</span>
+                    </h6>
+                    </a>
+                </li>
             </a>
             {% endfor %}
         </ul>

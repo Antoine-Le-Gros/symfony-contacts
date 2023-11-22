@@ -47,11 +47,11 @@ final class CategoryFactory extends ModelFactory
     protected function getDefaults(): array
     {
         $word = self::faker()->word();
+
         return [
             'name' => mb_convert_case($word, MB_CASE_TITLE),
         ];
     }
-
 
     /**
      * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#initialization
