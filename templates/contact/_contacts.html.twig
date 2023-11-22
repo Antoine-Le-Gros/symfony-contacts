@@ -3,10 +3,13 @@
     {% for contact in contacts %}
         <li>
             <a href="{{ path('app_contact_show', {id:contact.id}) }}">
-                <h6><span class="lastname">{{ contact.lastname }}</span>,
+                <h6>
+                    <span class="lastname">{{ contact.lastname }}</span>,
                     <span class="firstname">{{ contact.firstname }}</span>
-                    {% if contact.category %}
-                    <span class="badge bg-secondary">{{ contact.category.name  }}</span>
+                    {% if contact.category is not null %}
+                    <a class="nav-link" href="{{ path('app_category_show', {id:contact.category.id}) }}">
+                        <span class="badge bg-secondary">{{ contact.category.name  }}</span>
+                    </a>
                     {% endif %}
                 </h6>
             </a>
