@@ -4,6 +4,6 @@
 
 {% block body %}
 
-    {{ include('contact/_contacts.html.twig', {contacts: category.contacts}) }}
+    {{ include('contact/_contacts.html.twig', {contacts: category.contacts, show_category:false}) }}
 
 {% endblock %}

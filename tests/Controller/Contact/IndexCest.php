@@ -27,7 +27,7 @@ class IndexCest
         $I->seeResponseCodeIsSuccessful(200);
         $I->seeInTitle('Liste des contacts');
         $I->see('Liste des contacts', 'h1');
-        $I->seeNumberOfElements('li', 50);
+        $I->seeNumberOfElements('ul.contacts li', 50);
     }
 
     public function firstLinkContact(ControllerTester $I): void
@@ -69,6 +69,6 @@ class IndexCest
         $I->amOnPage('/contact?search=charles');
         $text = $I->grabMultiple('ul.contacts li a[href]');
         $I->assertEquals(['AUBRY, Charles', 'ab, Charles', 'ad, Charles', 'av, Charles'], $text);
-        $I->seeNumberOfElements('li', 4);
+        $I->seeNumberOfElements('ul.contacts li', 4);
     }
 }
