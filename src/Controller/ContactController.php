@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Contact;
+use App\Form\ContactType;
 use App\Repository\ContactRepository;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -33,16 +34,35 @@ class ContactController extends AbstractController
         return $this->render('contact/show.html.twig', ['contact' => $contact]);
     }
 
-    #[Route('contact/{id}/update', requirements: ['id' => '\d+'])]
-    public function update($contact)
+    #[Route('/contact/{id}/update', requirements: ['id' => '\d+'])]
+    public function update(Contact $contact): Response
     {
+        $form = $this->createForm(ContactType::class, $contact);
+
+        return $this->render('contact/update.html.twig', [
+            'contact' => $contact,
+            'form' => $form,
+        ]);
     }
-    #[Route('contact/create')]
-    public function create()
+
+    #[Route('/contact/create')]
+    public function create(): Response
     {
+        $form = $this->createForm(ContactType::class);
+
+        return $this->render('contact/create.html.twig', [
+            'form' => $form,
+        ]);
     }
-    #[Route('contact/{id}/delete', requirements: ['id' => '\d+'])]
-    public function delete($contact)
+
+    #[Route('/contact/{id}/delete', requirements: ['id' => '\d+'])]
+    public function delete(Contact $contact): Response
     {
+        $form = $this->createForm(ContactType::class, $contact);
+
+        return $this->render('contact/delete.html.twig', [
+            'contact' => $contact,
+            'form' => $form,
+        ]);
     }
 }
