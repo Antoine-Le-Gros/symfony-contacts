@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% set titre = Suppression de {{ contact.lastname }}, {{ contact.firstname }}  %}
+{% block title %} {{ titre }}{% endblock %}
+
+{% block body %}
+    <h1>{{ titre }}</h1>
+{% endblock %}
+
+
+

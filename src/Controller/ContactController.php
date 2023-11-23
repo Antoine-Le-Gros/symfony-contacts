@@ -21,7 +21,7 @@ class ContactController extends AbstractController
         return $this->render('contact/index.html.twig', ['contacts' => $contacts, 'search' => $search]);
     }
 
-    #[Route('/contact/{id}')]
+    #[Route('/contact/{id}', requirements: ['id' => '\d+'])]
     public function show(
         #[MapEntity(expr: 'repository.findWithCategory(id)')]
         ?Contact $contact
@@ -31,5 +31,18 @@ class ContactController extends AbstractController
         }
 
         return $this->render('contact/show.html.twig', ['contact' => $contact]);
+    }
+
+    #[Route('contact/{id}/update', requirements: ['id' => '\d+'])]
+    public function update($contact)
+    {
+    }
+    #[Route('contact/create')]
+    public function create()
+    {
+    }
+    #[Route('contact/{id}/delete', requirements: ['id' => '\d+'])]
+    public function delete($contact)
+    {
     }
 }
