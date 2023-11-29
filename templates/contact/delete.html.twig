@@ -5,6 +5,10 @@
 
 {% block body %}
     <h1>{{ title }}</h1>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input class="btn btn-primary w-100" type="button" value="Supprimer">
+    {{ form_end(form) }}
 {% endblock %}
 
 
