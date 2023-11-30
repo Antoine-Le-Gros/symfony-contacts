@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% set title = "Edition de #{ contact.lastname }, #{ contact.firstname }" %}
+{% set title = "Édition de #{ contact.lastname }, #{ contact.firstname }" %}
 {% block title %}{{ title }}{% endblock %}
 
 {% block stylesheets %}
@@ -8,9 +8,9 @@
 
 {% block body %}
     <h1>{{ title }}</h1>
-    {{ form_start(form, {'method' :'POST'}) }}
+    {{ form_start(form) }}
     {{ form_widget(form) }}
-    <input class="btn btn-primary w-100" type="button" value="Modifier">
+    <input class="btn btn-primary w-100" type="submit" value="Modifier">
     {{ form_end(form) }}
 {% endblock %}
 

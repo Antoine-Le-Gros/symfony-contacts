@@ -4,9 +4,9 @@
 
 {% block body %}
     <h1>{{titre}}</h1>
-    {{ form_start(form, {'method' :'POST'}) }}
+    {{ form_start(form) }}
     {{ form_widget(form) }}
-    <input class="btn btn-primary w-100" type="button" value="Créer">
+    <input class="btn btn-primary w-100" type="submit" value="Créer">
     {{ form_end(form) }}
 {% endblock %}
 
