@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ContactRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ContactRepository::class)]
 class Contact
@@ -14,15 +15,22 @@ class Contact
     private ?int $id = null;
 
     #[ORM\Column(length: 30)]
+    #[Assert\NotBlank, Assert\Length(max: 30)]
     private ?string $firstname = null;
 
     #[ORM\Column(length: 40)]
+    #[Assert\NotBlank, Assert\Length(max: 40)]
     private ?string $lastname = null;
 
     #[ORM\Column(length: 100)]
+    #[Assert\NotBlank, Assert\Length(max: 100)]
     private ?string $email = null;
 
     #[ORM\Column(length: 20)]
+    #[Assert\NotBlank, Assert\Length(max: 20), Assert\Regex(
+        pattern: '/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4})$/',
+        message: 'Format de téléphone invalide')
+    ]
     private ?string $phone = null;
 
     #[ORM\ManyToOne(inversedBy: 'contacts')]
