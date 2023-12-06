@@ -32,7 +32,6 @@ class ContactType extends AbstractType
             ->add('category', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'name',
-                'placeholder' => 'Categorie ?',
                 'required' => false,
                 'query_builder' => function (EntityRepository $entityRepository) {
                     return $entityRepository->createQueryBuilder('c')
