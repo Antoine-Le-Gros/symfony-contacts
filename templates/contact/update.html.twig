@@ -1,17 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% set title = "Édition de #{ contact.lastname }, #{ contact.firstname }" %}
-{% block title %}{{ title }}{% endblock %}
 
-{% block stylesheets %}
-{%  endblock %}
 
 {% block body %}
-    <h1>{{ title }}</h1>
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <input class="btn btn-primary w-100" type="submit" value="Modifier">
-    {{ form_end(form) }}
+    {{ include ('contact/_form.html.twig', {submit_label : 'Modifier',
+        titre : "Édition de #{ contact.lastname }, #{ contact.firstname }",
+        form : form }, with_context = false) }}
 {% endblock %}
 
 
