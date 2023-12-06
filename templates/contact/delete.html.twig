@@ -5,9 +5,9 @@
 
 {% block body %}
     <h1>{{ title }}</h1>
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <input class="btn btn-primary w-100" type="submit" value="Supprimer">
+    {{ form_start(form, {attr : {class : 'd-flex'}}) }}
+    {{ form_row(form.delete, {label : 'Supprimer', attr : {class : 'btn btn-primary'}}) }}
+    {{ form_row(form.cancel, {label : 'Annuler', attr : {class : 'btn btn-secondary'}}) }}
     {{ form_end(form) }}
 {% endblock %}
 
