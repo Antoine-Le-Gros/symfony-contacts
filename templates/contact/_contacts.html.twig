@@ -2,7 +2,9 @@
 <ul class="contacts">
     {% for contact in contacts %}
         <li>
-            <a href="{{ path('app_contact_show', {id:contact.id}) }}"><span class="lastname">{{ contact.lastname }}</span>, <span class="firstname">{{ contact.firstname }}</span></a>
+            <a href="{{ path('app_contact_update', {id:contact.id}) }}"><span class="material-symbols-outlined text-warning">edit</span></a>
+            <a href="{{ path('app_contact_delete', {id:contact.id}) }}"><span class="material-symbols-outlined text-danger">delete</span></a>
+            <a href="{{ path('app_contact_show', {id:contact.id}) }}" class="contact"><span class="lastname">{{ contact.lastname }}</span>, <span class="firstname">{{ contact.firstname }}</span></a>
             <h6>
                 {% if show_category??true and contact.category is not null %}
                 <a class="nav-link" href="{{ path('app_category_show', {id:contact.category.id}) }}">
