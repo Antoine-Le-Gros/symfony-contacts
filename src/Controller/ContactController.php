@@ -82,19 +82,23 @@ class ContactController extends AbstractController
     }
 
     #[Route('/contact/{id}/delete', requirements: ['id' => '\d+'])]
-    public function delete(Contact $contact, EntityManagerInterface $entityManager): Response
+    public function delete(Contact $contact,
+        EntityManagerInterface $entityManager,
+        Request $request): Response
     {
         $form = $this->createFormBuilder()
             ->add('delete', SubmitType::class)
             ->add('cancel', SubmitType::class)
             ->getForm();
-
-        if ($form->isSubmitted() && $form->isValid()) {
+        $form->handleRequest($request);
+        if ($form->isSubmitted()) {
             if ($form->get('delete')->isClicked()) {
                 $entityManager->remove($contact);
                 $entityManager->flush();
+
                 return $this->redirectToRoute('app_contact_index');
             }
+
             return $this->redirectToRoute('app_contact_show', [
                 'id' => $contact->getId(),
             ]);
