@@ -52,7 +52,7 @@ class IndexCest
         );
         $I->amOnPage('/contact');
         $I->seeResponseCodeIsSuccessful(200);
-        $text = $I->grabMultiple('ul.contacts li a[href]');
+        $text = $I->grabMultiple('ul.contacts li a[href].contact');
         $I->assertEquals(['Aba, Zoe', 'Gouedar, Pierre', 'Le Gros, Antoine', 'Zwz, Henry'], $text);
     }
 
@@ -67,7 +67,7 @@ class IndexCest
             ]
         );
         $I->amOnPage('/contact?search=charles');
-        $text = $I->grabMultiple('ul.contacts li a[href]');
+        $text = $I->grabMultiple('ul.contacts li a[href].contact');
         $I->assertEquals(['AUBRY, Charles', 'ab, Charles', 'ad, Charles', 'av, Charles'], $text);
         $I->seeNumberOfElements('ul.contacts li', 4);
     }
