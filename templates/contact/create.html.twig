@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
-{% block title %}Création d'un nouveau contact{% endblock %}
-
+{% set title = "Création d'un nouveau contact" %}
+{% block title %} {{ title }} {% endblock %}
 {% block body %}
 {{ include ('contact/_form.html.twig', {submit_label : 'Ajouter',
-                                        titre : "Création d'un nouveau contact",
+                                        title : title,
                                         form : form }, with_context = false) }}
 {% endblock %}
 

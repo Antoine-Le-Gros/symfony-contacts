@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% set title = "Édition de #{ contact.lastname }, #{ contact.firstname }" %}
-
+{% block title %} {{ title }} {% endblock %}
 
 {% block body %}
     {{ include ('contact/_form.html.twig', {submit_label : 'Modifier',
-        titre : "Édition de #{ contact.lastname }, #{ contact.firstname }",
+        title : title,
         form : form }, with_context = false) }}
 {% endblock %}
 
