@@ -47,3 +47,14 @@ Pour configurer la base de données, lancez la commande :
 composer db
 ```
 
+## Documentation identifiants et mots de passe
+
+Les identifiants pour avoir le role Admin :
+- prénom : Tony 
+- nom : Stark 
+- email : root@example.com
+
+Les identifiants pour avoir le role User :
+- prénom : Peter
+- nom : Parker
+- email : user@example.com
