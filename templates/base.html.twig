@@ -34,7 +34,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav-item">
                         <li> <a href="{{ path('app_category_index')}}"> Catégories</a></li>
+                        {% if is_granted('IS_AUTHENTICATED') %}
                         <li> <a href="{{ path('app_contact_create')}}"> Ajouter un contact</a></li>
+                        {% endif %}
                     </ul>
                     <form class="d-flex" role="search" action="{{ path('app_contact_index') }}">
                         <input class="form-control me-2" type="search" name="search" placeholder="Recherche" aria-label="Recherche" value="{{ search|default('') }}">
