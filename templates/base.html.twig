@@ -18,6 +18,16 @@
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">Contact</a>
+                {% if is_granted('IS_AUTHENTICATED') %}
+                    <a class="btn btn-outline-secondary" href="{{ path('app_logout') }}">
+                        Utilisateur {{ app.user.firstname ?? 'Anonyme' }},
+                        se déconnecter
+                    </a>
+                {% elseif is_granted('IS_AUTHENTICATED') == false%}
+                    <a class="btn btn-outline-secondary" href="{{ path('app_login') }}">
+                        Se connecter
+                    </a>
+                {% endif %}
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
