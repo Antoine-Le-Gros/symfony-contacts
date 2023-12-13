@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class ContactController extends AbstractController
 {
@@ -36,6 +37,7 @@ class ContactController extends AbstractController
         return $this->render('contact/show.html.twig', ['contact' => $contact]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/contact/{id}/update', requirements: ['id' => '\d+'])]
     public function update(Contact $contact,
         Request $request,
@@ -59,6 +61,7 @@ class ContactController extends AbstractController
         ]);
     }
 
+    #[IsGranted('IS_AUTHENTICATED_REMEMBERED')]
     #[Route('/contact/create')]
     public function create(Request $request,
         EntityManagerInterface $entityManager): Response
@@ -80,7 +83,7 @@ class ContactController extends AbstractController
             'form' => $form,
         ]);
     }
-
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/contact/{id}/delete', requirements: ['id' => '\d+'])]
     public function delete(Contact $contact,
         EntityManagerInterface $entityManager,
