@@ -2,8 +2,10 @@
 <ul class="contacts">
     {% for contact in contacts %}
         <li>
+            {% if is_granted('ROLE_ADMIN') %}
             <a href="{{ path('app_contact_update', {id:contact.id}) }}"><span class="material-symbols-outlined text-warning">edit</span></a>
             <a href="{{ path('app_contact_delete', {id:contact.id}) }}"><span class="material-symbols-outlined text-danger">delete</span></a>
+            {% endif %}
             <a href="{{ path('app_contact_show', {id:contact.id}) }}" class="contact"><span class="lastname">{{ contact.lastname }}</span>, <span class="firstname">{{ contact.firstname }}</span></a>
             <h6>
                 {% if show_category??true and contact.category is not null %}
