@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Category;
 use App\Entity\Contact;
 use App\Entity\User;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -31,6 +32,11 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Category', 'fas fa-list', Category::class);
         yield MenuItem::linkToCrud('Contact', 'fas fa-list', Contact::class);
         yield MenuItem::linkToCrud('User', 'fas fa-list', User::class);
+    }
 
+    public function configureAssets(): Assets
+    {
+        return Assets::new()
+            ->addCssFile('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
     }
 }
